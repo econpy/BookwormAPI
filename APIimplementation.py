@@ -16,8 +16,6 @@ import decimal
 """
 
 execfile('knownHosts.py')
-#We define prefs to default to the Open Library set at first; later, it can do other things.
-
 
 
 class dbConnect:
@@ -70,6 +68,7 @@ class userqueries:
 
     def execute(self):
         return self.returnval
+
 
 class userquery:
     def __init__(self,outside_dictionary = {"counttype":["Percentage_of_Books"],"search_limits":{"word":["polka dot"],"LCSH":["Fiction"]}},db=None,databaseScheme=None):
