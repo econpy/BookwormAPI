@@ -32,7 +32,6 @@ if len(form) > 0: #(Use CGI input if it's there:)
     data = json.loads(JSONinput)
     data['log_date'] = datetime.now().strftime('%d/%h/%Y:%H:%M:%S')
     output = open("/tmp/err",'w'); output.write(json.__file__)
-    data = json.loads(JSONinput)
     #For back-compatability, "method" can be defined in the json or as a separate part of the post.
     #Using the form-posting way of returning 'method' is deprecated.
     try:
@@ -48,7 +47,8 @@ if len(form) > 0: #(Use CGI input if it's there:)
     outfile.write('%s\n' % json.dumps(data))
     outfile.flush()
     for userinfo in ['user_ip', 'log_date']:
-        data.pop(userinfo)
+        if userinfo in data:
+            data.pop(userinfo)
 
     #if somewhere else has already set a privileges level, then you can get higher ones here.
     try:
