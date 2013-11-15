@@ -4,7 +4,6 @@
 Whenever you add a new bookworm to your server, remember to add a line for it in this file.
 
 However, always keep the 'default' line listed below in this file.
-
 """
 
 general_prefs = dict()
