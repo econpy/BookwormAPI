@@ -42,8 +42,12 @@ class userqueries:
     #But until that day, it's useful to be able to return lists of elements, which happens in here.
 
     def __init__(self,outside_dictionary = {"counttype":["Percentage_of_Books"],"search_limits":[{"word":["polka dot"],"LCSH":["Fiction"]}]},db = None):
-        prefs = general_prefs['default']
-        prefs['database'] = self.database
+        try:
+            self.database = outside_dictionary.setdefault('database', 'default')
+            prefs = general_prefs[self.database]
+        except KeyError: #If it's not in the option, use some default preferences and search on localhost. This will work in most cases here on out.
+            prefs = general_prefs['default']
+            prefs['database'] = self.database
         self.prefs = prefs
         self.wordsheap = prefs['fastword']
         self.words = prefs['fullword']
