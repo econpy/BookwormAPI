@@ -11,3 +11,6 @@ ubuntu-install:
 	chown www-data:www-data /usr/lib/cgi-bin/APIimplementation.py
 	chown www-data:www-data /usr/lib/cgi-bin/dbbindings.py
 	chown www-data:www-data /usr/lib/cgi-bin/knownHosts.py
+	chmod 755 /usr/lib/cgi-bin/APIimplementation.py
+	chmod 755 /usr/lib/cgi-bin/dbbindings.py
+	chmod 755 /usr/lib/cgi-bin/knownHosts.py
