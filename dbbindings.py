@@ -43,7 +43,11 @@ if len(form) > 0: #(Use CGI input if it's there:)
         except:
             raise
             pass
-    data['user_ip'] = headers(method)
+    # This may not be available if the user is accessing data directly from an API call
+    try:
+        data['user_ip'] = headers(method)
+    except:
+        pass
     outfile.write('%s\n' % json.dumps(data))
     outfile.flush()
     for userinfo in ['user_ip', 'log_date']:
